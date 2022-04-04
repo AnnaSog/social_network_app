@@ -1,14 +1,9 @@
 import './MyPosts.css'
 import Post from './Post/Post';
 
-const MyPosts = () => {
+const MyPosts = ({post}) => {
 
-    let postData = [
-        {id:1, message:"Anna is smart", like: 15},
-        {id:2, message:"Anna is beautiful", like: 20}
-    ];
-
-    let postsElements = postData.map(elem => <Post key={elem.id} message={elem.message} like={elem.like}/>)
+    let postsElements = post.map(elem => <Post key={elem.id} message={elem.message} like={elem.like}/>)
 
     return (
         <div className='myPosts'>
