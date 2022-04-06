@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import App from './App';
 
 let dialogData = [
@@ -25,9 +25,17 @@ let postData = [
   {id:2, message:"Anna is beautiful", like: 20}
 ];
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
   <React.StrictMode>
     <App dialog={dialogData} message={messagesData} post={postData}/>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <App dialog={dialogData} message={messagesData} post={postData}/>
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
