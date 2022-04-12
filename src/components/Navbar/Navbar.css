@@ -1,6 +1,7 @@
 .nav {
     background-color: #e7e8ec;
     padding: 20px;
+    height: 80vh;
 }
 .item {
     list-style: none;
@@ -11,4 +12,16 @@
 }
 a.active {
     color: red;
+}
+.sidebar {
+    text-align: center;
+}
+
+.friends {
+    display: flex;
+    justify-content: center;
+}
+
+.nav h2 {
+    margin-bottom: 5px;
 }

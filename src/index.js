@@ -10,7 +10,8 @@ root.render(
     <App 
       dialog={state.messagePage.dialogData} 
       message={state.messagePage.messagesData} 
-      post={state.profilePage.postData}/>
+      post={state.profilePage.postData}
+      friends={state.sidebar.friends}/>
   </React.StrictMode>
 );
 

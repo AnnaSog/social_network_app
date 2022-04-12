@@ -1,7 +1,16 @@
 import { NavLink } from 'react-router-dom';
+import Sidebar from './Sidebar/Sidebar';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = (props) => {
+    let friendsData = props.friends.map((elem, i) =>
+        <Sidebar 
+            key={i}
+            id={elem.id}
+            name={elem.name}
+        />
+    );
+
     return(
         <>
             <nav className='nav'>
@@ -22,6 +31,15 @@ const Navbar = () => {
                         <NavLink to="/setting">Setting</NavLink>
                     </li>
                 </ul>
+
+                <div className='sidebar'>
+                    <h2>Friends</h2>
+                    <div className='friends'>
+                       {friendsData}   
+                    </div>
+                   
+                </div>
+                               
             </nav>
         </>
     )
