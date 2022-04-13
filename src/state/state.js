@@ -1,4 +1,4 @@
-// import Anna from '../img/Anna.jpg'
+import {rerenderEntineTree} from '../render';
 
 let state = {
 
@@ -44,6 +44,7 @@ export let addPost = (postMessage) => {
         like: 0
     }
     state.profilePage.postData.push(newPost);
+    rerenderEntineTree(state, addPost);     //перерендиваем ДОМ каждый раз после изменения state
 }
 
 export default state;

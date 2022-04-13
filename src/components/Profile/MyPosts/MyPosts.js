@@ -9,7 +9,8 @@ const MyPosts = (props) => {
 
     let addPost = ()=> {
         let textPost = ref.current.value;  //узнаем, что вносит пользователь
-        props.addPost(textPost)
+        props.addPost(textPost);
+        ref.current.value ='';  //очищаем строку
     }
 
 
