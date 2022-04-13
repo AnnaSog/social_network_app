@@ -2,15 +2,14 @@ import { useRef } from 'react';
 import './MyPosts.css'
 import Post from './Post/Post';
 
-const MyPosts = ({post}) => {
-
-    let postsElements = post.map(elem => <Post key={elem.id} message={elem.message} like={elem.like}/>)
+const MyPosts = (props) => {
+    let postsElements = props.post.map(elem => <Post key={elem.id} message={elem.message} like={elem.like}/>)
 
     const ref = useRef(null);
 
     let addPost = ()=> {
         let textPost = ref.current.value;  //узнаем, что вносит пользователь
-        console.log(textPost);
+        props.addPost(textPost)
     }
 
 
