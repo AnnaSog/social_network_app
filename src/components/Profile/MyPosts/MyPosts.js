@@ -7,19 +7,22 @@ const MyPosts = (props) => {
 
     const ref = useRef(null);
 
-    let addPost = ()=> {
+    const addPost = ()=> {
         let textPost = ref.current.value;  //узнаем, что вносит пользователь
         props.addPost(textPost);
-        ref.current.value ='';  //очищаем строку
     }
 
+    const onPostChange = () => {
+        let textPost = ref.current.value;  //узнаем, что вносит пользователь
+        props.updateNewPostText(textPost);   
+    }
 
     return (
         <div className='myPosts'>
             My posts
             <div>
                 <div>
-                    <textarea ref={ref}></textarea>
+                    <textarea onChange={onPostChange} ref={ref} value={props.newPostText} placeholder="Что у вас нового?"/>
                 </div>
                 <button onClick={addPost}>Add post</button>
             </div>

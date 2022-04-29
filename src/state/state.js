@@ -6,7 +6,8 @@ let state = {
         postData: [
             {id:1, message:"Anna is smart", like: 15},
             {id:2, message:"Anna is beautiful", like: 20}
-        ]
+        ],
+        newPostText: ''
     },
 
     messagePage: {
@@ -37,14 +38,20 @@ let state = {
     }
 }
 
-export let addPost = (postMessage) => {
+export let addPost = () => {
     let newPost = {
         id: 3,
-        message:postMessage,
+        message:state.profilePage.newPostText,
         like: 0
     }
     state.profilePage.postData.push(newPost);
-    rerenderEntineTree(state, addPost);     //перерендиваем ДОМ каждый раз после изменения state
+    state.profilePage.newPostText = '';    //очищаем 
+    rerenderEntineTree(state);     //перерендиваем ДОМ каждый раз после изменения state
+}
+
+export let updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText ;
+    rerenderEntineTree(state);     //перерендиваем ДОМ каждый раз после изменения state
 }
 
 export default state;
