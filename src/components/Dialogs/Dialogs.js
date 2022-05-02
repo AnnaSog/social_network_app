@@ -3,22 +3,26 @@ import Message from "./Message/Message";
 import "./Dialogs.css";
 import { useRef } from "react";
 
-const Dialogs = ({dialogData, messageData}) => {
+const Dialogs = (props) => {
 
     const ref = useRef(null);
 
     const addMessage = () => {
-        let textMessage = ref.current.value; //полуяаем инфо внесенное пользователем 
-        console.log(textMessage);
+        let textMessage = ref.current.value; //получаем инфо внесенное пользователем 
+        props.addMessage(textMessage);
+    }
+    const onMessageChange = () => {
+        let textMessage = ref.current.value; //получаем инфо внесенное пользователем 
+        props.updateNewMessagePost(textMessage);
     }
    
-    let dialogsElements = dialogData.map((elem, i) =>
+    let dialogsElements = props.dialogData.map((elem, i) =>
         <DialogItem key={i} 
             img={elem.img}
             name={elem.name} 
             id={elem.id} 
         />);
-    let messagesElements = messageData.map((elem, i) =>
+    let messagesElements = props.messageData.map((elem, i) =>
         <Message key={i} 
             message={elem.message}
         />);
@@ -32,7 +36,7 @@ const Dialogs = ({dialogData, messageData}) => {
                 {messagesElements}
                 <div>
                     <div>
-                    <textarea ref={ref}></textarea> 
+                        <textarea onChange={onMessageChange} ref={ref} value={props.newPostText}></textarea> 
                     </div>
                     <button onClick={addMessage}>Add message</button>
                 </div>

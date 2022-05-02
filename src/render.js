@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { addPost, updateNewPostText} from './state/state';
+import { addPost, updateNewPostText, addMessage, updateNewMessagePost} from './state/state';
 
 //SPA рендерит один раз, но чтобы рендерить и добавлять написанное на стене, необх.рендерить многократно и для этого рендер необходимо указать в фун-ии
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,6 +16,9 @@ export let rerenderEntineTree = (state) => {
         friends={state.sidebar.friends}
         addPost={addPost}
         updateNewPostText={updateNewPostText}
+        addMessage={addMessage}
+        newMessageText={state.messagePage.newMessageText}
+        updateNewMessagePost={updateNewMessagePost}
       />
     </React.StrictMode>
   );

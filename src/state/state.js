@@ -27,6 +27,7 @@ let state = {
             {id: 5, message:'Отлично!'},
             {id: 6, message:'Okay!'},
         ],
+        newMessageText: ''  //изначально пустой
     },
 
     sidebar: {
@@ -51,6 +52,21 @@ export let addPost = () => {
 
 export let updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText ;
+    rerenderEntineTree(state);     //перерендиваем ДОМ каждый раз после изменения state
+}
+
+export let addMessage = () => {
+    let textMessage = {
+        id: 7, 
+        message: state.messagePage.newMessageText
+    }
+    state.messagePage.messagesData.push(textMessage);
+    state.messagePage.newMessageText = '';    //очищаем 
+    rerenderEntineTree(state);     //перерендиваем ДОМ каждый раз после изменения state
+}
+
+export let updateNewMessagePost = (newText) => {
+    state.messagePage.newMessageText = newText;
     rerenderEntineTree(state);     //перерендиваем ДОМ каждый раз после изменения state
 }
 
