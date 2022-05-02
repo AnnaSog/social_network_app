@@ -1,4 +1,6 @@
-import {rerenderEntineTree} from '../render';
+let rerenderEntineTree = () => {    //фиктивный для привязки к главному rerenderEntineTree в index.js (см. фун-ию subscribe)
+    console.log('State change');
+}
 
 let state = {
 
@@ -39,7 +41,7 @@ let state = {
     }
 }
 
-export let addPost = () => {
+export const addPost = () => {
     let newPost = {
         id: 3,
         message:state.profilePage.newPostText,
@@ -50,12 +52,12 @@ export let addPost = () => {
     rerenderEntineTree(state);     //перерендиваем ДОМ каждый раз после изменения state
 }
 
-export let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText ;
     rerenderEntineTree(state);     //перерендиваем ДОМ каждый раз после изменения state
 }
 
-export let addMessage = () => {
+export const addMessage = () => {
     let textMessage = {
         id: 7, 
         message: state.messagePage.newMessageText
@@ -65,9 +67,13 @@ export let addMessage = () => {
     rerenderEntineTree(state);     //перерендиваем ДОМ каждый раз после изменения state
 }
 
-export let updateNewMessagePost = (newText) => {
+export const updateNewMessagePost = (newText) => {
     state.messagePage.newMessageText = newText;
     rerenderEntineTree(state);     //перерендиваем ДОМ каждый раз после изменения state
+}
+
+export const subscribe = (observer) => {    //с помощью subscribe и observer(из ООП) привяжем локальный rerenderEntineTree с главным в index.js без импорта и цикличной зависимоси
+    rerenderEntineTree = observer;  
 }
 
 export default state;
